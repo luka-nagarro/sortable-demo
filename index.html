@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
     />
     <style>
       .glyphicon-move {
@@ -14,7 +14,6 @@
         cursor: grabbing;
         font-size: 30px;
       }
-      
 
       .list-group {
         max-width: 1000px;
@@ -149,12 +148,12 @@
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
     <script>
       var list = document.getElementById('listWithHandle')
       var sortable = Sortable.create(list, {
         handle: '.glyphicon-move',
-        animation: 150
+        animation: 150,
       })
 
       list.addEventListener('click', function (event) {
