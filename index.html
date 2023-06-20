@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+    />
+    <style>
+      .glyphicon-move {
+        cursor: move;
+        cursor: -webkit-grabbing;
+        cursor: grabbing;
+      }
+
+      .list-group {
+        max-width: 1000px;
+        margin: 0 auto;
+
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+
+      .list-group .badge {
+        background-color: transparent;
+      }
+
+      .list-group-item:first-child .badge:first-child,
+      .list-group-item:last-child .badge:nth-child(2) {
+        display: none;
+      }
+    </style>
+    <title>Sortable</title>
+  </head>
+  <body>
+    <div id="listWithHandle" class="list-group">
+      <div class="list-group-item" data-id="0">
+        <span class="badge">⬆️</span>
+        <span class="badge">⬇️</span>
+        <span class="glyphicon glyphicon-move"></span>
+        A. Drag me by the handle
+      </div>
+      <div class="list-group-item" data-id="1">
+        <span class="badge">⬆️</span>
+        <span class="badge">⬇️</span>
+        <span class="glyphicon glyphicon-move"></span>
+        B. You can also select text
+      </div>
+      <div class="list-group-item" data-id="2">
+        <span class="badge">⬆️</span>
+        <span class="badge">⬇️</span>
+        <span class="glyphicon glyphicon-move"></span>
+        C. Best of both worlds!
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script>
+      var list = document.getElementById('listWithHandle')
+      var sortable = Sortable.create(list, {
+        handle: '.glyphicon-move',
+        animation: 150
+      })
+
+      list.addEventListener('click', function (event) {
+        var target = event.target
+        var item = target.closest('.list-group-item')
+
+        if (target.classList.contains('badge') && item) {
+          var prevItem = item.previousElementSibling
+          var nextItem = item.nextElementSibling
+
+          if (target.textContent === '⬆️' && prevItem) {
+            list.insertBefore(item, prevItem)
+          } else if (target.textContent === '⬇️' && nextItem) {
+            list.insertBefore(item, nextItem.nextElementSibling)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
