@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="./bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="./bootstrap.min.css" rel="stylesheet" />
     <style>
       .drag {
         cursor: move;
@@ -36,8 +33,10 @@
       .list-group-item.sortable-chosen {
         background-color: #aaa;
       }
-      .list-group-item:hover {
-        outline: 1px dotted #000;
+      @media (hover: hover) {
+        .list-group-item:hover {
+          outline: 1px dotted #000;
+        }
       }
     </style>
     <title>Sortable</title>
